@@ -1,21 +1,30 @@
-const produtos = require('../../dados');
+const products = require('../../dados');
 
-const listarProdutos = (req, res) => {
-    const { initialPrice, finalPrice } = req.query
+const listProducts = (req, res) => {
+    const { category, initialPrice, finalPrice } = req.query;
 
-    const todosProdutos = [];
+    const allProducts = [];
+
+    if (category) {
+        const filteredProductsByCategory
+            = products.filter(produto => produto.category === category);
+        allProducts.push(...filteredProductsByCategory);
+    }
 
     if (initialPrice) {
-        const produtosEncontrados = produtos.filter(produto => produto.price >= initialPrice);
-        todosProdutos.push(...produtosEncontrados);
+        const filteredProductsByInitialPrice
+            = products.filter(produto => produto.price >= initialPrice);
+        allProducts.push(...filteredProductsByInitialPrice);
     }
 
     if (finalPrice) {
-        const produtosEncontrados = produtos.filter(produto => produto.price <= finalPrice);
-        todosProdutos.push(...produtosEncontrados);
+        const filteredProductsByFinalPrice
+            = products.filter(produto => produto.price <= finalPrice);
+
+        allProducts.push(...filteredProductsByFinalPrice);
     }
 
-    return res.json({ todosProdutos });
+    return res.json({ allProducts });
 }
 
-module.exports = { listarProdutos };
+module.exports = { listProducts };
