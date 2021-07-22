@@ -1,0 +1,17 @@
+{
+  "name": "aula-git-dani-guido",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/cubos-academy/aula-git-dani-guido.git",
+  "author": "danieldeandradelopes <danieldeandradelopes@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "start": "nodemon src/index.js"
+  },
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.12"
+  }
+}
