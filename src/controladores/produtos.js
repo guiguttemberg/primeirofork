@@ -6,8 +6,8 @@ const listarProdutos = (req, res) => {
     const allProducts = [];
 
     if (category) {
-        const filteredProducts = produtos.filter(produto => produto.category === category);
-        allProducts.push(...filteredProducts);
+        const filteredProductsByCategory = produtos.filter(produto => produto.category === category);
+        allProducts.push(...filteredProductsByCategory);
     }
 
     return res.json({ allProducts });
